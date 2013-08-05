@@ -6,7 +6,7 @@ CUSTOM SIDEBAR PLUGIN HOW TO:
 2. Add the code below outside your loop in index.php
 3. Go to Appearance -> Custom Sidebar
 4. Select which post type you want the option to be shown on
-5. Your good to go!!
+5. You're good to go!!
 
 
 ---------------------------------------------
