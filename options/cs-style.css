@@ -1,11 +1,10 @@
-.box {
+.cs-box {
 	max-width: 700px;
 }
 
 .postbox .sidebar-name {
 	border: none!important;
 }
-
 
 div.sidebar-name h3 {
 	cursor: auto;

@@ -14,9 +14,9 @@ THE CODE:
 ---------------------------------------------
 
 <?php
- if(function_exists('custom_sidebar')){
+ if(function_exists('custom_sidebar')) {
   custom_sidebar('name-1');
- }else{
+ } else {
   dynamic_sidebar('name-1');
  }
 ?>
