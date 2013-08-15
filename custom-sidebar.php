@@ -10,21 +10,21 @@ Author URI: http://040.se
 
 
 /**
-*
-* Load the function file
-*
-**/
+ *
+ * Load the function file
+ *
+ **/
 require_once('options/cs-options.php');
 
 
 /**
-*
-* Add the meta boxes
-*
-* The foreach loop is looping through the custom sidebar option and adds
-* a meta box to each page/post/custom post type that is selected in the option panel.
-*
-**/
+ *
+ * Add the meta boxes
+ *
+ * The foreach loop is looping through the custom sidebar option and adds
+ * a meta box to each page/post/custom post type that is selected in the option panel.
+ *
+ **/
 add_action('add_meta_boxes', 'custom_sidebar_meta_box');
 function custom_sidebar_meta_box() {
   $types = get_option( 'custom_sidebar_settings' );
@@ -43,11 +43,11 @@ function custom_sidebar_meta_box() {
 
 
 /**
-*
-* This function handles the markup. All the html
-* for the option page goes here
-*
-**/
+ *
+ * This function handles the markup. All the html
+ * for the option page goes here
+ *
+ **/
 function custom_sidebar_markup() {
   global $post;
   $custom = get_post_custom($post->ID);
@@ -65,11 +65,11 @@ function custom_sidebar_markup() {
 
 
 /**
-*
-* This function handles the saving process, it also deletes the
-* options thats not filled out from the DB
-*
-**/
+ *
+ * This function handles the saving process, it also deletes the
+ * options thats not filled out from the DB
+ *
+ **/
 add_action('save_post', 'custom_sidebar_save_details');
 function custom_sidebar_save_details() {
   global $post;
@@ -87,12 +87,12 @@ function custom_sidebar_save_details() {
 
 
 /**
-*
-* This function creates the widgets for each post, page etc.
-* Where the option for a custom_sidebar shows up, is decided
-* from the option panel.
-*
-**/
+ *
+ * This function creates the widgets for each post, page etc.
+ * Where the option for a custom_sidebar shows up, is decided
+ * from the option panel.
+ *
+ **/
 add_action('widgets_init', 'custom_sidebar_widget_init');
 function custom_sidebar_widget_init() {
   $types = get_option( 'custom_sidebar_settings' );
@@ -129,13 +129,13 @@ function custom_sidebar_widget_init() {
 
 
 /**
-*
-* This function will dynamically handle each custom sidebar
-* to make it easier for you. It takes one parameter:
-*
-* 1. Fallback sidebar (default: null)
-*
-**/
+ *
+ * This function will dynamically handle each custom sidebar
+ * to make it easier for you. It takes one parameter:
+ *
+ * 1. Fallback sidebar (default: null)
+ *
+ **/
 function custom_sidebar($fallback = null) {
   global $wp_query;
   $pID = $wp_query->post->ID;

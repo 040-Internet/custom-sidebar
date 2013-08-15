@@ -1,10 +1,10 @@
 <?php
 
 /**
-*
-* Add the plugin option page to admin menu
-*
-**/
+ *
+ * Add the plugin option page to admin menu
+ *
+ **/
 add_action('admin_menu', 'custom_sidebar_admin_page');
 function custom_sidebar_admin_page() {
   add_theme_page('Custom Sidebars Settings', 'Custom Sidebars', 'administrator', 'custom_sidebar-settings', 'custom_sidebar_admin_page_markup');
@@ -12,13 +12,13 @@ function custom_sidebar_admin_page() {
 
 
 /**
-*
-* Register the settings
-*
-* This will save the option in the wp_options table as 'custom_sidebar_settings'
-* The third parameter is a function that will validate your input values
-*
-**/
+ *
+ * Register the settings
+ *
+ * This will save the option in the wp_options table as 'custom_sidebar_settings'
+ * The third parameter is a function that will validate your input values
+ *
+ **/
 add_action('admin_init', 'custom_sidebar_register_settings');
 function custom_sidebar_register_settings() {
   register_setting('custom_sidebar_settings', 'custom_sidebar_settings', 'custom_sidebar_settings_validate');
@@ -26,10 +26,10 @@ function custom_sidebar_register_settings() {
 
 
 /**
-*
-* Register stylesheet
-*
-**/
+ *
+ * Register stylesheet
+ *
+ **/
 add_action('admin_init', 'custom_sidebar_stylesheet');
 function custom_sidebar_stylesheet() {
   wp_enqueue_style( 'custom_stylesheet', plugin_dir_url( __FILE__ ) . 'cs-style.css', false, 'screen');
@@ -37,15 +37,15 @@ function custom_sidebar_stylesheet() {
 
 
 /**
-*
-* Validate inputs
-*
-* This function validates your input values.
-*
-* $args will contain the values posted in your settings form, you can validate
-* them as no spaces allowed, no special chars allowed or validate emails etc.
-*
-**/
+ *
+ * Validate inputs
+ *
+ * This function validates your input values.
+ *
+ * $args will contain the values posted in your settings form, you can validate
+ * them as no spaces allowed, no special chars allowed or validate emails etc.
+ *
+ **/
 function custom_sidebar_settings_validate($args) {
 	// Enter validation here
 
@@ -55,12 +55,12 @@ function custom_sidebar_settings_validate($args) {
 
 
 /**
-*
-* Admin notices
-*
-* Display the validation errors and update messages
-*
-**/
+ *
+ * Admin notices
+ *
+ * Display the validation errors and update messages
+ *
+ **/
 add_action('admin_notices', 'custom_sidebar_admin_notices');
 function custom_sidebar_admin_notices() {
    settings_errors();
@@ -68,12 +68,12 @@ function custom_sidebar_admin_notices() {
 
 
 /**
-*
-* custom_sidebar_admin_page_markup
-*
-* This function handles the markup for your plugin settings page
-*
-**/
+ *
+ * custom_sidebar_admin_page_markup
+ *
+ * This function handles the markup for your plugin settings page
+ *
+ **/
 function custom_sidebar_admin_page_markup() { ?>
   <div class="wrap">
 
