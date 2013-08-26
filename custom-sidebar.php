@@ -27,18 +27,20 @@ require_once('options/cs-options.php');
  **/
 add_action('add_meta_boxes', 'custom_sidebar_meta_box');
 function custom_sidebar_meta_box() {
-  $types = get_option( 'custom_sidebar_settings' );
+  $types = get_option('custom_sidebar_settings');
 
-  foreach($types as $key => $type) {
-    add_meta_box(
-      'custom-sidebar',
-      'Custom Sidebar',
-      'custom_sidebar_markup',
-      $type,
-      'side',
-      'high' 
-    );
-  }  
+  if($types) {
+    foreach($types as $key => $type) {
+      add_meta_box(
+        'custom-sidebar',
+        'Custom Sidebar',
+        'custom_sidebar_markup',
+        $type,
+        'side',
+        'high' 
+      );
+    }
+  }
 }
 
 
@@ -88,34 +90,33 @@ function custom_sidebar_save_details() {
 
 /**
  *
- * This function creates the widgets for each post, page etc.
+ * This function creates the sidebar for each post, page etc in the widget area.
  * Where the option for a custom_sidebar shows up, is decided
  * from the option panel.
  *
  **/
 add_action('widgets_init', 'custom_sidebar_widget_init');
 function custom_sidebar_widget_init() {
-  $types = get_option( 'custom_sidebar_settings' );
-  $landingIDs = array();
+  $types = get_option('custom_sidebar_settings');
+  $pageID = array();
   $landingpages = '';
 
   if(!empty($types)){
     foreach($types as $key => $type) {
-      $landingpages[] = get_posts(  array(
-        'meta_key'      =>  'has_custom_sidebar',
-        'meta_value'    =>  'yes',
-        'post_type'      =>  $type
+      $landingpages[] = get_posts(array(
+        'meta_key'    =>  'has_custom_sidebar',
+        'meta_value'  =>  'yes',
+        'post_type'   =>  $type
       ));
     }
 
-    foreach($landingpages as $key) {
-      foreach($key as $landingpage) {
-        if(!in_array($landingpage->ID, $landingIDs)) {
-          $landingIDs[] = $landingpage->ID;
+    foreach($landingpages as $landingpage) {
+      foreach($landingpage as $page) {
+        if(!in_array($page->ID, $pageID)) {
+          $pageID[] = $page->ID;
           register_sidebar(array(
-            'name' => 'Custom Sidebar: ' . $landingpage->post_title,
-            'description' => '',
-            'id' => 'custom-sidebar-' . $landingpage->ID,
+            'name' => 'Custom Sidebar: ' . $page->post_title,
+            'id' => 'custom-sidebar-' . $page->ID,
             'before_widget' => '<div id="%1$s" class="widget %2$s"><div class="center">',
             'after_widget'  => '</div></div>',
             'before_title'  => '<h2 class="title">',

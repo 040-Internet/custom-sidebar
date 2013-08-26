@@ -7,7 +7,7 @@
  **/
 add_action('admin_menu', 'custom_sidebar_admin_page');
 function custom_sidebar_admin_page() {
-  add_theme_page('Custom Sidebars Settings', 'Custom Sidebars', 'administrator', 'custom_sidebar-settings', 'custom_sidebar_admin_page_markup');
+  add_theme_page('Custom Sidebars Settings', 'Custom Sidebars', 'administrator', 'custom_sidebar_settings', 'custom_sidebar_admin_page_markup');
 }
 
 
@@ -51,19 +51,6 @@ function custom_sidebar_settings_validate($args) {
 
   // Make sure you return the args
   return $args;
-}
-
-
-/**
- *
- * Admin notices
- *
- * Display the validation errors and update messages
- *
- **/
-add_action('admin_notices', 'custom_sidebar_admin_notices');
-function custom_sidebar_admin_notices() {
-   settings_errors();
 }
 
 
