@@ -56,6 +56,21 @@ function custom_sidebar_settings_validate($args) {
 
 /**
  *
+ * Admin notices
+ *
+ * Display the validation errors and update messages
+ *
+ **/
+if(is_admin() && $_GET['page'] == 'custom_sidebar_settings') {
+	add_action('admin_notices', 'custom_sidebar_admin_notices');
+	function custom_sidebar_admin_notices() {
+	  settings_errors();
+	}
+}
+
+
+/**
+ *
  * custom_sidebar_admin_page_markup
  *
  * This function handles the markup for your plugin settings page
